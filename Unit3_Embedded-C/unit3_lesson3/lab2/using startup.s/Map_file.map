@@ -1,0 +1,95 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+flash            0x0000000008000000 0x0000000000020000 xr
+sram             0x0000000020000000 0x0000000000005000 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+
+.text           0x0000000008000000       0xd4
+ *(.vectors*)
+ .vectors       0x0000000008000000       0x50 startup.o
+ *(.text)
+ .text          0x0000000008000050        0x8 startup.o
+ .text          0x0000000008000058       0x7c app.o
+                0x0000000008000058                main
+ *(.rodata)
+
+.glue_7         0x00000000080000d4        0x0
+ .glue_7        0x00000000080000d4        0x0 linker stubs
+
+.glue_7t        0x00000000080000d4        0x0
+ .glue_7t       0x00000000080000d4        0x0 linker stubs
+
+.vfp11_veneer   0x00000000080000d4        0x0
+ .vfp11_veneer  0x00000000080000d4        0x0 linker stubs
+
+.v4_bx          0x00000000080000d4        0x0
+ .v4_bx         0x00000000080000d4        0x0 linker stubs
+
+.iplt           0x00000000080000d4        0x0
+ .iplt          0x00000000080000d4        0x0 startup.o
+
+.rel.dyn        0x00000000080000d4        0x0
+ .rel.iplt      0x00000000080000d4        0x0 startup.o
+
+.data           0x00000000080000d4        0x4
+ *(.data)
+ .data          0x00000000080000d4        0x0 startup.o
+ .data          0x00000000080000d4        0x4 app.o
+                0x00000000080000d4                R_ODR
+
+.igot.plt       0x00000000080000d8        0x0
+ .igot.plt      0x00000000080000d8        0x0 startup.o
+
+.bss            0x0000000020000000        0x0
+ *(.bss)
+ .bss           0x0000000020000000        0x0 startup.o
+ .bss           0x0000000020000000        0x0 app.o
+LOAD startup.o
+LOAD app.o
+OUTPUT(lab3_cotrexM3.elf elf32-littlearm)
+
+.ARM.attributes
+                0x0000000000000000       0x2f
+ .ARM.attributes
+                0x0000000000000000       0x21 startup.o
+ .ARM.attributes
+                0x0000000000000021       0x33 app.o
+
+.comment        0x0000000000000000       0x7b
+ .comment       0x0000000000000000       0x7b app.o
+                                         0x7c (size before relaxing)
+
+.debug_line     0x0000000000000000      0x23b
+ .debug_line    0x0000000000000000       0x3b startup.o
+ .debug_line    0x000000000000003b      0x200 app.o
+
+.debug_info     0x0000000000000000      0xa5d
+ .debug_info    0x0000000000000000       0x26 startup.o
+ .debug_info    0x0000000000000026      0xa37 app.o
+
+.debug_abbrev   0x0000000000000000      0x1ec
+ .debug_abbrev  0x0000000000000000       0x14 startup.o
+ .debug_abbrev  0x0000000000000014      0x1d8 app.o
+
+.debug_aranges  0x0000000000000000       0x40
+ .debug_aranges
+                0x0000000000000000       0x20 startup.o
+ .debug_aranges
+                0x0000000000000020       0x20 app.o
+
+.debug_str      0x0000000000000000      0x516
+ .debug_str     0x0000000000000000       0x59 startup.o
+                                         0x63 (size before relaxing)
+ .debug_str     0x0000000000000059      0x4bd app.o
+                                        0x56e (size before relaxing)
+
+.debug_loc      0x0000000000000000       0x38
+ .debug_loc     0x0000000000000000       0x38 app.o
+
+.debug_frame    0x0000000000000000       0x2c
+ .debug_frame   0x0000000000000000       0x2c app.o
