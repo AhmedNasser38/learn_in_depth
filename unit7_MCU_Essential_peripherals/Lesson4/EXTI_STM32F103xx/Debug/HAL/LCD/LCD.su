@@ -1,0 +1,13 @@
+LCD.c:14:6:Delay_ms	24	static
+LCD.c:20:6:config_LCD_Pin_INPUT	16	static
+LCD.c:31:6:config_LCD_Pin_OUTPUT	16	static
+LCD.c:43:6:HAL_LCD_Isbusy	8	static
+LCD.c:64:6:HAL_LCD_Init	8	static
+LCD.c:111:6:HAL_LCD_Kick	8	static
+LCD.c:118:6:HAL_LCD_CMD	16	static
+LCD.c:148:6:HAL_LCD_Clear_Screen	8	static
+LCD.c:151:6:HAL_LCD_GotoXY	16	static
+LCD.c:164:6:HAL_LCD_Send_char	16	static
+LCD.c:202:6:HAL_LCD_Send_str	24	static
+LCD.c:222:6:HAL_LCD_Send_Num	24	static
+LCD.c:227:6:HAL_LCD_Send_RealNum	64	static
