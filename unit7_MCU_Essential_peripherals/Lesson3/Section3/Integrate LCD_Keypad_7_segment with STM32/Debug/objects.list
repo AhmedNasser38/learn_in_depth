@@ -1,0 +1,8 @@
+"HAL/KeyPad/KEYPAD.o"
+"HAL/LCD/LCD.o"
+"HAL/SevenSegment/SevenSegment.o"
+"Src/main.o"
+"Src/syscalls.o"
+"Src/sysmem.o"
+"Startup/startup_stm32f103c6tx.o"
+"stm32f103c6_Drivers/GPIO_Driver/stm32f103c6_GPIO_Driver.o"

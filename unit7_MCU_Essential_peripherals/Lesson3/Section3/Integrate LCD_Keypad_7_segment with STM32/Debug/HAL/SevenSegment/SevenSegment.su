@@ -1,0 +1,2 @@
+SevenSegment.c:16:6:HAL_SevenSegment_Init	16	static
+SevenSegment.c:27:6:HAL_SevenSegment_Display	16	static
