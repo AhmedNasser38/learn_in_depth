@@ -1,0 +1,4 @@
+stm32f103c6_RCC.c:85:10:MCAL_RCC_GetSys_ClkFreq	4	static
+stm32f103c6_RCC.c:104:10:MCAL_RCC_GetHClkFreq	16	static
+stm32f103c6_RCC.c:108:10:MCAL_RCC_GetAPB1_ClkFreq	16	static
+stm32f103c6_RCC.c:114:10:MCAL_RCC_GetAPB2_ClkFreq	16	static
