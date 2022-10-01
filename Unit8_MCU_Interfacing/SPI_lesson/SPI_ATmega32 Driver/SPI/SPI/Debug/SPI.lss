@@ -1,0 +1,361 @@
+
+SPI.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000001e6  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  0000023a  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  0000023a  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000026c  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000098  00000000  00000000  000002a8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000008fa  00000000  00000000  00000340  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 0000069f  00000000  00000000  00000c3a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000506  00000000  00000000  000012d9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000000dc  00000000  00000000  000017e0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000003f4  00000000  00000000  000018bc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000248  00000000  00000000  00001cb0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000068  00000000  00000000  00001ef8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e6 ee       	ldi	r30, 0xE6	; 230
+  68:	f1 e0       	ldi	r31, 0x01	; 1
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a0 36       	cpi	r26, 0x60	; 96
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	a0 e6       	ldi	r26, 0x60	; 96
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a0 36       	cpi	r26, 0x60	; 96
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 49 00 	call	0x92	; 0x92 <main>
+  8a:	0c 94 f1 00 	jmp	0x1e2	; 0x1e2 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <main>:
+#include "MCAL/SPI/SPI.h"
+
+
+int main(void)
+{
+    SPI_Init();
+  92:	0e 94 c5 00 	call	0x18a	; 0x18a <SPI_Init>
+  96:	ff cf       	rjmp	.-2      	; 0x96 <main+0x4>
+
+00000098 <DIO_Set_DDR_PIN>:
+		break;
+	}
+}
+
+void DIO_Set_DDR_PIN(DIO_PORT_ID PORT, DIO_PIN_ID PIN, DIO_Direction DDR) {
+	if (PORT <= PORTD_REG && PIN <= PIN7) {
+  98:	84 30       	cpi	r24, 0x04	; 4
+  9a:	08 f0       	brcs	.+2      	; 0x9e <DIO_Set_DDR_PIN+0x6>
+  9c:	75 c0       	rjmp	.+234    	; 0x188 <DIO_Set_DDR_PIN+0xf0>
+  9e:	68 30       	cpi	r22, 0x08	; 8
+  a0:	08 f0       	brcs	.+2      	; 0xa4 <DIO_Set_DDR_PIN+0xc>
+  a2:	72 c0       	rjmp	.+228    	; 0x188 <DIO_Set_DDR_PIN+0xf0>
+		if (DDR == OUTPUT) {
+  a4:	41 30       	cpi	r20, 0x01	; 1
+  a6:	b9 f5       	brne	.+110    	; 0x116 <DIO_Set_DDR_PIN+0x7e>
+			switch (PORT) {
+  a8:	81 30       	cpi	r24, 0x01	; 1
+  aa:	91 f0       	breq	.+36     	; 0xd0 <DIO_Set_DDR_PIN+0x38>
+  ac:	28 f0       	brcs	.+10     	; 0xb8 <DIO_Set_DDR_PIN+0x20>
+  ae:	82 30       	cpi	r24, 0x02	; 2
+  b0:	d9 f0       	breq	.+54     	; 0xe8 <DIO_Set_DDR_PIN+0x50>
+  b2:	83 30       	cpi	r24, 0x03	; 3
+  b4:	29 f1       	breq	.+74     	; 0x100 <DIO_Set_DDR_PIN+0x68>
+  b6:	2f c0       	rjmp	.+94     	; 0x116 <DIO_Set_DDR_PIN+0x7e>
+			case PORTA_REG:
+				SetBit(DDRA, PIN);
+  b8:	9a b3       	in	r25, 0x1a	; 26
+  ba:	21 e0       	ldi	r18, 0x01	; 1
+  bc:	30 e0       	ldi	r19, 0x00	; 0
+  be:	06 2e       	mov	r0, r22
+  c0:	02 c0       	rjmp	.+4      	; 0xc6 <DIO_Set_DDR_PIN+0x2e>
+  c2:	22 0f       	add	r18, r18
+  c4:	33 1f       	adc	r19, r19
+  c6:	0a 94       	dec	r0
+  c8:	e2 f7       	brpl	.-8      	; 0xc2 <DIO_Set_DDR_PIN+0x2a>
+  ca:	29 2b       	or	r18, r25
+  cc:	2a bb       	out	0x1a, r18	; 26
+				break;
+  ce:	23 c0       	rjmp	.+70     	; 0x116 <DIO_Set_DDR_PIN+0x7e>
+			case PORTB_REG:
+				SetBit(DDRB, PIN);
+  d0:	97 b3       	in	r25, 0x17	; 23
+  d2:	21 e0       	ldi	r18, 0x01	; 1
+  d4:	30 e0       	ldi	r19, 0x00	; 0
+  d6:	06 2e       	mov	r0, r22
+  d8:	02 c0       	rjmp	.+4      	; 0xde <DIO_Set_DDR_PIN+0x46>
+  da:	22 0f       	add	r18, r18
+  dc:	33 1f       	adc	r19, r19
+  de:	0a 94       	dec	r0
+  e0:	e2 f7       	brpl	.-8      	; 0xda <DIO_Set_DDR_PIN+0x42>
+  e2:	29 2b       	or	r18, r25
+  e4:	27 bb       	out	0x17, r18	; 23
+				break;
+  e6:	17 c0       	rjmp	.+46     	; 0x116 <DIO_Set_DDR_PIN+0x7e>
+			case PORTC_REG:
+				SetBit(DDRC, PIN);
+  e8:	94 b3       	in	r25, 0x14	; 20
+  ea:	21 e0       	ldi	r18, 0x01	; 1
+  ec:	30 e0       	ldi	r19, 0x00	; 0
+  ee:	06 2e       	mov	r0, r22
+  f0:	02 c0       	rjmp	.+4      	; 0xf6 <DIO_Set_DDR_PIN+0x5e>
+  f2:	22 0f       	add	r18, r18
+  f4:	33 1f       	adc	r19, r19
+  f6:	0a 94       	dec	r0
+  f8:	e2 f7       	brpl	.-8      	; 0xf2 <DIO_Set_DDR_PIN+0x5a>
+  fa:	29 2b       	or	r18, r25
+  fc:	24 bb       	out	0x14, r18	; 20
+				break;
+  fe:	0b c0       	rjmp	.+22     	; 0x116 <DIO_Set_DDR_PIN+0x7e>
+			case PORTD_REG:
+				SetBit(DDRD, PIN);
+ 100:	91 b3       	in	r25, 0x11	; 17
+ 102:	21 e0       	ldi	r18, 0x01	; 1
+ 104:	30 e0       	ldi	r19, 0x00	; 0
+ 106:	06 2e       	mov	r0, r22
+ 108:	02 c0       	rjmp	.+4      	; 0x10e <DIO_Set_DDR_PIN+0x76>
+ 10a:	22 0f       	add	r18, r18
+ 10c:	33 1f       	adc	r19, r19
+ 10e:	0a 94       	dec	r0
+ 110:	e2 f7       	brpl	.-8      	; 0x10a <DIO_Set_DDR_PIN+0x72>
+ 112:	29 2b       	or	r18, r25
+ 114:	21 bb       	out	0x11, r18	; 17
+				break;
+			}
+
+		}
+		if (DDR == INPUT) {
+ 116:	41 11       	cpse	r20, r1
+ 118:	37 c0       	rjmp	.+110    	; 0x188 <DIO_Set_DDR_PIN+0xf0>
+			switch (PORT) {
+ 11a:	81 30       	cpi	r24, 0x01	; 1
+ 11c:	91 f0       	breq	.+36     	; 0x142 <DIO_Set_DDR_PIN+0xaa>
+ 11e:	28 f0       	brcs	.+10     	; 0x12a <DIO_Set_DDR_PIN+0x92>
+ 120:	82 30       	cpi	r24, 0x02	; 2
+ 122:	d9 f0       	breq	.+54     	; 0x15a <DIO_Set_DDR_PIN+0xc2>
+ 124:	83 30       	cpi	r24, 0x03	; 3
+ 126:	29 f1       	breq	.+74     	; 0x172 <DIO_Set_DDR_PIN+0xda>
+ 128:	08 95       	ret
+			case PORTA_REG:
+				ClearBit(DDRA, PIN);
+ 12a:	2a b3       	in	r18, 0x1a	; 26
+ 12c:	81 e0       	ldi	r24, 0x01	; 1
+ 12e:	90 e0       	ldi	r25, 0x00	; 0
+ 130:	02 c0       	rjmp	.+4      	; 0x136 <DIO_Set_DDR_PIN+0x9e>
+ 132:	88 0f       	add	r24, r24
+ 134:	99 1f       	adc	r25, r25
+ 136:	6a 95       	dec	r22
+ 138:	e2 f7       	brpl	.-8      	; 0x132 <DIO_Set_DDR_PIN+0x9a>
+ 13a:	80 95       	com	r24
+ 13c:	82 23       	and	r24, r18
+ 13e:	8a bb       	out	0x1a, r24	; 26
+				break;
+ 140:	08 95       	ret
+			case PORTB_REG:
+				ClearBit(DDRB, PIN);
+ 142:	27 b3       	in	r18, 0x17	; 23
+ 144:	81 e0       	ldi	r24, 0x01	; 1
+ 146:	90 e0       	ldi	r25, 0x00	; 0
+ 148:	02 c0       	rjmp	.+4      	; 0x14e <DIO_Set_DDR_PIN+0xb6>
+ 14a:	88 0f       	add	r24, r24
+ 14c:	99 1f       	adc	r25, r25
+ 14e:	6a 95       	dec	r22
+ 150:	e2 f7       	brpl	.-8      	; 0x14a <DIO_Set_DDR_PIN+0xb2>
+ 152:	80 95       	com	r24
+ 154:	82 23       	and	r24, r18
+ 156:	87 bb       	out	0x17, r24	; 23
+				break;
+ 158:	08 95       	ret
+			case PORTC_REG:
+				ClearBit(DDRC, PIN);
+ 15a:	24 b3       	in	r18, 0x14	; 20
+ 15c:	81 e0       	ldi	r24, 0x01	; 1
+ 15e:	90 e0       	ldi	r25, 0x00	; 0
+ 160:	02 c0       	rjmp	.+4      	; 0x166 <DIO_Set_DDR_PIN+0xce>
+ 162:	88 0f       	add	r24, r24
+ 164:	99 1f       	adc	r25, r25
+ 166:	6a 95       	dec	r22
+ 168:	e2 f7       	brpl	.-8      	; 0x162 <DIO_Set_DDR_PIN+0xca>
+ 16a:	80 95       	com	r24
+ 16c:	82 23       	and	r24, r18
+ 16e:	84 bb       	out	0x14, r24	; 20
+				break;
+ 170:	08 95       	ret
+			case PORTD_REG:
+				ClearBit(DDRD, PIN);
+ 172:	21 b3       	in	r18, 0x11	; 17
+ 174:	81 e0       	ldi	r24, 0x01	; 1
+ 176:	90 e0       	ldi	r25, 0x00	; 0
+ 178:	02 c0       	rjmp	.+4      	; 0x17e <DIO_Set_DDR_PIN+0xe6>
+ 17a:	88 0f       	add	r24, r24
+ 17c:	99 1f       	adc	r25, r25
+ 17e:	6a 95       	dec	r22
+ 180:	e2 f7       	brpl	.-8      	; 0x17a <DIO_Set_DDR_PIN+0xe2>
+ 182:	80 95       	com	r24
+ 184:	82 23       	and	r24, r18
+ 186:	81 bb       	out	0x11, r24	; 17
+ 188:	08 95       	ret
+
+0000018a <SPI_Init>:
+			#if (SPI_INTRRUPT == SPI_INT_ON)
+				SetBit(SPCR,SPIE);
+				//if interrupt enable , we must set the global interrupt enable bit(7) in SREG
+				SetBit(SREG,7);
+			#elif (SPI_INTRRUPT == SPI_INT_OFF)
+				ClearBit(SPCR,SPIE);
+ 18a:	8d b1       	in	r24, 0x0d	; 13
+ 18c:	8f 77       	andi	r24, 0x7F	; 127
+ 18e:	8d b9       	out	0x0d, r24	; 13
+			//When the DORD bit is written to one, the LSB of the data word is transmitted first.
+			//When the DORD bit is written to zero, the MSB of the data word is transmitted first.
+			#if (SPI_DATA_ORDER == SPI_LSB_FISRT)
+				SetBit(SPCR,DORD);
+			#elif (SPI_DATA_ORDER == SPI_MSB_FISRT)
+				ClearBit(SPCR,DORD);
+ 190:	8d b1       	in	r24, 0x0d	; 13
+ 192:	8f 7d       	andi	r24, 0xDF	; 223
+ 194:	8d b9       	out	0x0d, r24	; 13
+			/********************Master Slave Select ******************/
+			// Bit 4 – MSTR: Master/Slave Select
+			//This bit selects Master SPI mode when written to one, and Slave SPI mode when written logic
+			//zero
+			#if (SPI_MODE == MASTER)
+				SetBit(SPCR,MSTR);
+ 196:	8d b1       	in	r24, 0x0d	; 13
+ 198:	80 61       	ori	r24, 0x10	; 16
+ 19a:	8d b9       	out	0x0d, r24	; 13
+				// adjust DDR for PINs
+				DIO_Set_DDR_PIN(SPI_DDR,SS,OUTPUT);
+ 19c:	87 b3       	in	r24, 0x17	; 23
+ 19e:	41 e0       	ldi	r20, 0x01	; 1
+ 1a0:	64 e0       	ldi	r22, 0x04	; 4
+ 1a2:	0e 94 4c 00 	call	0x98	; 0x98 <DIO_Set_DDR_PIN>
+				DIO_Set_DDR_PIN(SPI_DDR,MOSI,OUTPUT);
+ 1a6:	87 b3       	in	r24, 0x17	; 23
+ 1a8:	41 e0       	ldi	r20, 0x01	; 1
+ 1aa:	65 e0       	ldi	r22, 0x05	; 5
+ 1ac:	0e 94 4c 00 	call	0x98	; 0x98 <DIO_Set_DDR_PIN>
+				DIO_Set_DDR_PIN(SPI_DDR,SCK,OUTPUT);
+ 1b0:	87 b3       	in	r24, 0x17	; 23
+ 1b2:	41 e0       	ldi	r20, 0x01	; 1
+ 1b4:	67 e0       	ldi	r22, 0x07	; 7
+ 1b6:	0e 94 4c 00 	call	0x98	; 0x98 <DIO_Set_DDR_PIN>
+				
+				DIO_Set_DDR_PIN(SPI_DDR,MISO,INPUT);
+ 1ba:	87 b3       	in	r24, 0x17	; 23
+ 1bc:	40 e0       	ldi	r20, 0x00	; 0
+ 1be:	66 e0       	ldi	r22, 0x06	; 6
+ 1c0:	0e 94 4c 00 	call	0x98	; 0x98 <DIO_Set_DDR_PIN>
+			//When this bit is written to one, SCK is high when idle. When CPOL is written to zero, SCK is low
+			//when idle.
+			#if (SPI_OPERATING_LEVEL == SPI_IDLE_HIGH)
+					SetBit(SPCR,CPOL);
+			#elif (SPI_OPERATING_LEVEL == SPI_IDLE_LOW)
+					ClearBit(SPCR,CPOL);
+ 1c4:	8d b1       	in	r24, 0x0d	; 13
+ 1c6:	87 7f       	andi	r24, 0xF7	; 247
+ 1c8:	8d b9       	out	0x0d, r24	; 13
+			//The settings of the Clock Phase bit (CPHA) determine if data is sampled on the leading (first) or
+			//trailing (last) edge of SCK.
+			#if (SPI_SAMPLING_EDGE == SPI_RISING)
+				SetBit(SPCR,CPHA);
+			#elif (SPI_SAMPLING_EDGE == SPI_FALLING)
+				ClearBit(SPCR,CPHA);
+ 1ca:	8d b1       	in	r24, 0x0d	; 13
+ 1cc:	8b 7f       	andi	r24, 0xFB	; 251
+ 1ce:	8d b9       	out	0x0d, r24	; 13
+			#endif
+			/********************SPI pre-scalar in case of master ******************/
+			 //Bits 1, 0 – SPR1, SPR0: SPI Clock Rate Select 1 and 0
+			SPCR = SPCR | (SPI_PRESCALAR);
+ 1d0:	8d b1       	in	r24, 0x0d	; 13
+ 1d2:	8d b9       	out	0x0d, r24	; 13
+			//When this bit is written logic one the SPI speed (SCK Frequency) will be doubled when the SPI
+			//is in Master mode
+			#if (SPI_DOUBLE_SPEED == SPI_DOUBLE_SPEED_MODE_ON)
+					SetBit(SPSR,SPI2X);
+			#elif (SPI_DOUBLE_SPEED == SPI_DOUBLE_SPEED_MODE_OFF)
+					ClearBit(SPSR,SPI2X);
+ 1d4:	8e b1       	in	r24, 0x0e	; 14
+ 1d6:	8e 7f       	andi	r24, 0xFE	; 254
+ 1d8:	8e b9       	out	0x0e, r24	; 14
+			#endif
+			/********************Enable SPI ******************/
+			#if (SPI_ENABLE == SPI_ON)
+				SetBit(SPCR,SPE);
+ 1da:	8d b1       	in	r24, 0x0d	; 13
+ 1dc:	80 64       	ori	r24, 0x40	; 64
+ 1de:	8d b9       	out	0x0d, r24	; 13
+ 1e0:	08 95       	ret
+
+000001e2 <_exit>:
+ 1e2:	f8 94       	cli
+
+000001e4 <__stop_program>:
+ 1e4:	ff cf       	rjmp	.-2      	; 0x1e4 <__stop_program>
